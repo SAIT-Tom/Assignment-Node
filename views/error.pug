@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1.br We are so sorry about that:
+  h2.br= message
+  h3.br= error.status
+  p.br #{error.stack}

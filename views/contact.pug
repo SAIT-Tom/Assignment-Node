@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  
+
+  form(method='POST' action='/users/contact')
+    br
+    h2.text-center.bx.m-3 Contact us:
+    .form-floating.m-3.col-md-4
+      input#exampleFormControlInput1.form-control(type='text' name='customer_name' value= request_data && request_data.customer_name )
+      label.form-label(for='exampleFormControlInput1') Your name
+
+    .form-floating.m-3.col-md-4
+      input#exampleFormControlInput3.form-control(type="email"  name="customer_email" value= request_data && request_data.customer_email)
+      label.form-label(for='exampleFormControlInput3') E-mail
+
+    .form-floating.m-3.col-md-4
+      input#exampleFormControlInput2.form-control(type='text' name='request_title' value= request_data && request_data.request_title)
+      label.form-label(for='exampleFormControlInput2') Title
+
+    .form-floating.m-3
+      textarea#floatingTextarea.form-control(name='request_body')= request_data && request_data.request_body
+      label(for='floatingTextarea') Your message:
+          
+    button.btn.btn-primary.m-3(type='submit') Submit
+
+  //-Errors display
+  if errors 
+    ul 
+      each error in errors
+        li.alert.alert-danger.m3= error
